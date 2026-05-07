@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include"Record.hpp"
 #include <vector>
 #include <cstddef>
 #include <cstring>
@@ -10,13 +10,6 @@ class recordLayout
 {
 
 public:
-    struct record
-    {
-        int id;
-        std::string name;
-        float grade;
-        bool isActive;
-    };
 
     std::vector<std::byte> serializeRecord(record r)
     {
