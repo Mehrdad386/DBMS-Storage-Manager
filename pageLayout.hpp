@@ -49,5 +49,14 @@ public:
         return page;
     }
 
+    std::vector<std::byte> getRecordFromPage (std::vector<std::byte>& page , int slotNumber){
+        int offset = 4 + ((slotNumber-1)*30);
+        std::vector<std::byte> record ;
+        for(int i{} ; i<30 ; i++){
+            record.push_back(page[offset+i]);
+        }
+        return record;
+    }
+
 private:
 };
