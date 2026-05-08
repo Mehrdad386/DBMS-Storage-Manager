@@ -1,4 +1,5 @@
-#include "recordLayout.hpp"
+#include <vector>
+#include <cstdint>
 
 class pageLayout
 {

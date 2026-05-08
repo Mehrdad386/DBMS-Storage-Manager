@@ -1,0 +1,9 @@
+class fileManager {
+
+public:
+
+
+private:
+
+
+};
