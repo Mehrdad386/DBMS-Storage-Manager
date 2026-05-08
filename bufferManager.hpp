@@ -1,0 +1,8 @@
+class bufferManager{
+
+public:
+
+private:
+
+
+};

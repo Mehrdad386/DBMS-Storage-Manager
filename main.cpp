@@ -1,5 +1,8 @@
 #include<iostream>
 #include"recordLayout.hpp"
+#include"bufferManager.hpp"
+#include"pageLayout.hpp"
+#include"fileManager.hpp"
 
 int main(){
 
