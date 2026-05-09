@@ -1,3 +1,5 @@
+#ifndef RECORD
+#define RECORD
 #include<string>
 
 struct record
@@ -7,3 +9,6 @@ struct record
     float grade;
     bool isActive;
 };
+
+
+#endif

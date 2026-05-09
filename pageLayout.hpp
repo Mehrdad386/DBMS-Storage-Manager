@@ -1,7 +1,9 @@
+#ifndef PAGELAYOUT
+#define PAGELAYOUT
 #include <vector>
 #include <cstdint>
 
-class pageLayout
+class PageLayout
 {
 
 public:
@@ -61,3 +63,5 @@ public:
 
 private:
 };
+
+#endif

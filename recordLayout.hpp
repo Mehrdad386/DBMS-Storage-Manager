@@ -1,3 +1,5 @@
+#ifndef RECORDLAYOUT
+#define RECORDLAYOUT
 #include <iostream>
 #include"Record.hpp"
 #include <vector>
@@ -6,7 +8,7 @@
 #include <bit>
 #include <cstdint>
 
-class recordLayout
+class RecordLayout
 {
 
 public:
@@ -108,3 +110,5 @@ public:
 
 private:
 };
+
+#endif

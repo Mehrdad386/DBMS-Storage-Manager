@@ -1,8 +1,10 @@
+#ifndef FILEMANAGER
+#define FILEMANAGER
 #include <vector>
 #include <fstream>
 #include <cstddef>
 
-class fileManager
+class FileManager
 {
 
 public:
@@ -50,3 +52,5 @@ public:
 
 private:
 };
+
+#endif
