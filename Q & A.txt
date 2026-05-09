@@ -1,0 +1,36 @@
+Q : 1. If we change the page size from 512 to 4096 bytes, what impact does this
+have on the number of I/O operations? Give one advantage and one disadvantage.
+
+A : If we change the page size from 512 to 4096 bytes, the number of I/O operations decreases because each page read or write transfers more data in a single operation. 
+One advantage of this change is better sequential access performance and reduced overhead for large datasets since you need fewer disk reads and writes overall. 
+One disadvantage is increased internal fragmentation because pages may be partially filled, wasting space, and random access latency within a page becomes higher since you have to search through more data.
+
+
+Q : 2. Why did we use fixed-length (20 bytes) for the name field in serialize_record
+instead of storing only the exact length of each name? (Give one performance
+reason and one simplicity reason)
+
+A :We used a fixed-length of 20 bytes for the name field instead of storing only the exact length of each name for two main reasons. 
+For performance, fixed-length fields allow O(1) direct access to any record using simple offset calculation without needing to traverse previous records to find where each variable-length field starts, which makes record retrieval much faster.
+For simplicity, using fixed-length fields eliminates the need to store an extra length field for each record or implement complex variable-length parsing logic, keeping the serialization and deserialization code straightforward, predictable, and easier to debug.
+
+
+
+Q : 3. In our Buffer Manager, we used LRU. Give a scenario where LRU performs poorly
+and FIFO would perform better.
+
+A : A scenario where LRU performs poorly and FIFO would perform better is during a sequential full table scan of a database that is larger than the buffer pool capacity.
+When scanning sequentially, each new page accessed causes an eviction of the previous page, but LRU wastes overhead by constantly tracking and updating usage information for pages that will never be used again, resulting in zero cache hits. 
+FIFO performs better in this scenario because it simply evicts the oldest page in a circular manner without any extra tracking overhead, achieving the same zero cache hit rate but with much simpler bookkeeping and less computational cost.
+
+
+
+Q : 4. If we remove the null_bitmap, what problem would occur?
+
+A: If we remove the null_bitmap, we lose the ability to distinguish between valid records and deleted or empty slots within a page. 
+This causes several problems: 
+-you cannot tell if a slot contains actual valid data or garbage from a previously deleted record 
+-deleted records would never be overwritten leading to wasted space that cannot be reused
+-the system would have to scan through all records linearly to find empty slots which is extremely inefficient
+-and attempting to read a deleted record would return corrupted meaningless data instead of properly indicating that the record does not exist.
+The null_bitmap is essential for supporting record deletion and slot reuse in a fixed-length page structure.
