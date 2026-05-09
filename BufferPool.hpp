@@ -64,8 +64,12 @@ public:
     }
 
 
-    void flushAll (std::string fileName){
-        
+    void flushAll(std::string fileName){
+        for (int pageNum : dirty) {
+            fm.writePage(fileName, pageNum, pages[pageNum]);
+            std::cout << "Flushed page " << pageNum << " to disk" << std::endl;
+        }
+        dirty.clear();
     }
 
 private:
