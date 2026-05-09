@@ -59,6 +59,15 @@ public:
         return pageBytes;
     }
 
+    void markDirty(int pageNum){
+        dirty.emplace(pageNum);
+    }
+
+
+    void flushAll (std::string fileName){
+        
+    }
+
 private:
     int capacity;
     std::unordered_map<int, std::vector<std::byte>> pages;
