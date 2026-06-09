@@ -2,7 +2,7 @@
 #define COURSES
 
 #include<string>
-struct courses
+struct Course
 {
     int course_id;
     std::string title;
